@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Celular</string>
+    <string name="button">Button</string>
+    <string name="button">Button</string>
+    <string name="button">Button</string>
+    <string name="button">Button</string>
+    <string name="cadastra_livro">Cadastra Livro</string>
+    <string name="ver_livros">Ver Livros</string>
+</resources>
