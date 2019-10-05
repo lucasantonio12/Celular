@@ -20,7 +20,7 @@
             android:text="Titulo:" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/titleView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,7 +41,7 @@
             android:text="Autor:" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/authorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -61,7 +61,7 @@
             android:text="Ano:" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/yearView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -81,7 +81,7 @@
             android:text="Nota:" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/noteView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -103,7 +103,7 @@
             android:text="Anterior" />
 
         <Button
-            android:id="@+id/nextButtom"
+            android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

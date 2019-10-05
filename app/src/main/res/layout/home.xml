@@ -10,14 +10,14 @@
     tools:context=".Home">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="222px"
         android:text="@string/cadastra_livro" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/listButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="222px"
