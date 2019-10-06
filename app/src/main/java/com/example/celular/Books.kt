@@ -14,19 +14,24 @@ class Books : AppCompatActivity() {
         Room.databaseBuilder(this, Db::class.java, "DataBaseBooks")
             .allowMainThreadQueries().build()
     }
-    var books = db.BookIT().listAll()
+    var books =  ArrayList<Book>()
     var position = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books)
 
-        printBooks(position)
-       if(position <= books.size){
+        newBook()
+        if (!books.isEmpty()){
+            printBooks(position)
+        }
+
+       if(position < books.size){
 
            nextButton.isInvisible = false
 
            nextButton.setOnClickListener {
-               printBooks(position++)
+               position++
+               printBooks(position)
            }
 
         }else{
@@ -37,13 +42,19 @@ class Books : AppCompatActivity() {
             backButton.isInvisible = false
 
             backButton.setOnClickListener {
-                printBooks(position--)
+                position--
+                printBooks(position)
             }
 
         }else{
             backButton.isInvisible = true
         }
 
+    }
+    fun newBook(){
+        db.BookIT().listAll().forEach {
+            books.add(it)
+        }
     }
 
     fun printBooks(posicion:Int){

@@ -21,17 +21,11 @@ class RegisterBook : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_book)
 
-        saveButton.setOnClickListener {
-            db.BookIT().inserir(
-                Book(
-                    titleText.text.toString(),
-                    authorText.text.toString(),
-                    yearText.text.toString().toInt(),
-                    noteText.rating
-                )
-            )
 
-            db.BookIT().listAll().forEach { Log.i("Book", "BooK = ${it}") }
+        saveButton.setOnClickListener {
+            db.BookIT().inserir(Book(titleText.text.toString(), authorText.text.toString(), yearText.text.toString().toInt(), noteText.rating))
+            db.BookIT().listAll().forEach { Log.i("Book",it.toString())}
+
             titleText.setText("")
             authorText.setText("")
             yearText.setText("")

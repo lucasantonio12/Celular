@@ -13,13 +13,13 @@ interface BookIT{
 
     @Update
     fun atualizar(book: Book): Int
-    @Query("SELECT * FROM BOOK")
+    @Query("SELECT * FROM table_books")
 
     fun listAll(): Array<Book>
-    @Query("SELECT * FROM BOOK WHERE id = :id")
+    @Query("SELECT * FROM table_books WHERE id = :id")
 
     fun findById(id: Long): Book
-    @Query("SELECT * FROM BOOK WHERE name = :name")
+    @Query("SELECT * FROM table_books WHERE name = :name")
 
     fun findByName (name: String) : Book
 }
