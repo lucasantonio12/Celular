@@ -24,33 +24,15 @@ class Books : AppCompatActivity() {
         if (!books.isEmpty()){
             printBooks(position)
         }
-
-       if(position < books.size){
-
-           nextButton.isInvisible = false
-
-           nextButton.setOnClickListener {
-               position++
-               printBooks(position)
-           }
-
-        }else{
-           nextButton.isInvisible = true
+       nextButton.setOnClickListener {
+           printBooks(position++)
        }
-        if(position > 0){
-
-            backButton.isInvisible = false
-
-            backButton.setOnClickListener {
-                position--
-                printBooks(position)
-            }
-
-        }else{
-            backButton.isInvisible = true
+        backButton.setOnClickListener {
+            printBooks(position--)
         }
 
     }
+
     fun newBook(){
         db.BookIT().listAll().forEach {
             books.add(it)

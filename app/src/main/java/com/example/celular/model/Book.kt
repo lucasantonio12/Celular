@@ -8,8 +8,7 @@ import java.util.*
 
 
 @Entity(tableName = "table_books")
-data class Book( var name:String, var author:String, var year:Int, var note:Float){
-
+data class Book(var name:String, var author:String, var year:Int, var note:Float){
     @PrimaryKey (autoGenerate = true)
-    var id = 1
+    var id = 0
 }

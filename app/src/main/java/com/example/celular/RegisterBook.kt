@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.room.Room
 import com.example.celular.conection.Db
 import com.example.celular.model.Book
@@ -23,13 +24,17 @@ class RegisterBook : AppCompatActivity() {
 
 
         saveButton.setOnClickListener {
-            db.BookIT().inserir(Book(titleText.text.toString(), authorText.text.toString(), yearText.text.toString().toInt(), noteText.rating))
-            db.BookIT().listAll().forEach { Log.i("Book",it.toString())}
+            if(titleText.equals("") && authorText.equals("") && yearText.equals("") && noteText.equals("")){
+                db.BookIT().inserir(Book(titleText.text.toString(), authorText.text.toString(), yearText.text.toString().toInt(), noteText.rating))
+                db.BookIT().listAll().forEach { Log.i("Book",it.toString())}
 
-            titleText.setText("")
-            authorText.setText("")
-            yearText.setText("")
-            noteText.rating = 0f
+                titleText.setText("")
+                authorText.setText("")
+                yearText.setText("")
+                noteText.rating = 0f
+            }else{
+                Toast.makeText(this,"Porfavor, preencha todos os campos",Toast.LENGTH_SHORT).show()
+            }
         }
 
         cancelButton.setOnClickListener {
