@@ -2,6 +2,7 @@ package com.example.celular
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.isInvisible
 import androidx.room.Room
 import com.example.celular.conection.Db
@@ -24,12 +25,19 @@ class Books : AppCompatActivity() {
         if (!books.isEmpty()){
             printBooks(position)
         }
-       nextButton.setOnClickListener {
-           printBooks(position++)
-       }
+        checkBack()
+        checkNext()
+
+        nextButton.setOnClickListener {
+            printBooks(position++)
+        }
+
         backButton.setOnClickListener {
             printBooks(position--)
         }
+
+
+
 
     }
 
@@ -46,5 +54,24 @@ class Books : AppCompatActivity() {
         noteView.text = books.get(posicion).note.toString()
     }
 
+    fun checkNext(){
+        if (position + 1 >= books.size) {
+            nextButton.visibility = View.INVISIBLE
+            true
+        } else {
+            nextButton.visibility = View.VISIBLE
+            false
+        }
+    }
+
+    fun checkBack(){
+        if (position - 1 < 0) {
+            backButton.visibility = View.INVISIBLE
+            true
+        } else {
+            backButton.visibility = View.VISIBLE
+            false
+        }
+    }
 
 }
