@@ -24,9 +24,9 @@ class RegisterBook : AppCompatActivity() {
 
 
         saveButton.setOnClickListener {
-            if(titleText.equals("") && authorText.equals("") && yearText.equals("") && noteText.equals("")){
+            if(!titleText.text.isEmpty() && !authorText.text.isEmpty()&& !yearText.text.isEmpty() && !noteText.rating.equals(0f)){
                 db.BookIT().inserir(Book(titleText.text.toString(), authorText.text.toString(), yearText.text.toString().toInt(), noteText.rating))
-                db.BookIT().listAll().forEach { Log.i("Book",it.toString())}
+                db.BookIT().listAll().forEach { Log.i("Book-list",it.toString())}
 
                 titleText.setText("")
                 authorText.setText("")

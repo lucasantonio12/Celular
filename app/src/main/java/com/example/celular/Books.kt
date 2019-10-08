@@ -17,27 +17,31 @@ class Books : AppCompatActivity() {
     }
     var books =  ArrayList<Book>()
     var position = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books)
 
         newBook()
-        if (!books.isEmpty()){
+
+        if (books.isEmpty()){
+            empty()
+        }else{
             printBooks(position)
         }
-        checkBack()
-        checkNext()
+
+        checkNextBack()
+
 
         nextButton.setOnClickListener {
-            printBooks(position++)
+            position++
+            printBooks(position)
         }
 
         backButton.setOnClickListener {
-            printBooks(position--)
+            position--
+            printBooks(position)
         }
-
-
-
 
     }
 
@@ -52,19 +56,12 @@ class Books : AppCompatActivity() {
         authorView.text = books.get(posicion).author
         yearView.text = books.get(posicion).year.toString()
         noteView.text = books.get(posicion).note.toString()
+
+        checkNextBack()
     }
 
-    fun checkNext(){
-        if (position + 1 >= books.size) {
-            nextButton.visibility = View.INVISIBLE
-            true
-        } else {
-            nextButton.visibility = View.VISIBLE
-            false
-        }
-    }
+    fun checkNextBack(){
 
-    fun checkBack(){
         if (position - 1 < 0) {
             backButton.visibility = View.INVISIBLE
             true
@@ -72,6 +69,24 @@ class Books : AppCompatActivity() {
             backButton.visibility = View.VISIBLE
             false
         }
+
+        if (position + 1 >= books.size) {
+            nextButton.visibility = View.INVISIBLE
+        } else {
+            nextButton.visibility = View.VISIBLE
+        }
+    }
+
+    fun empty(){
+        titleView.setText("")
+        authorView.setText("")
+        yearView.setText("")
+        noteView.setText("")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 
 }

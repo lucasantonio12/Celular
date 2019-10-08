@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".RegisterBook"></activity>
+        <activity android:name=".ListBooks"></activity>
+        <activity android:name=".RegisterBook" />
         <activity android:name=".Books" />
         <activity android:name=".Home">
             <intent-filter>
