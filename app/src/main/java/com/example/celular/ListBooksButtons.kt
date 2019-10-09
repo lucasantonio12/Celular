@@ -10,7 +10,7 @@ import com.example.celular.model.Book
 import kotlinx.android.synthetic.main.activity_books.*
 import kotlinx.android.synthetic.main.activity_register_book.*
 
-class Books : AppCompatActivity() {
+class ListBooksButtons : AppCompatActivity() {
     val db: Db by lazy {
         Room.databaseBuilder(this, Db::class.java, "DataBaseBooks")
             .allowMainThreadQueries().build()

@@ -4,16 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ListBooks">
+    tools:context=".adpter.ListViewBooks">
 
-    <AutoCompleteTextView
-        android:id="@+id/autocomplete"
+    <ListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:completionHint="Digite Um titulo"
-        android:completionThreshold="1"
-        android:hint="Digite Um Título" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

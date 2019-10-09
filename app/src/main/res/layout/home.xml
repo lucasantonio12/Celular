@@ -11,15 +11,36 @@
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="match_parent"
+        android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_margin="222px"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100px"
         android:text="@string/cadastra_livro" />
 
     <Button
         android:id="@+id/listButton"
-        android:layout_width="match_parent"
+        android:layout_width="153dp"
         android:layout_height="wrap_content"
-        android:layout_margin="222px"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100px"
+        android:layout_marginTop="50px"
         android:text="@string/ver_livros" />
+
+    <Button
+        android:id="@+id/completTitles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50px"
+        android:text="Completa Titulos" />
+
+    <Button
+        android:id="@+id/listTitulos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="140px"
+        android:text="Lista de titulos"/>
+
+
 </LinearLayout>
