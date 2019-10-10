@@ -42,5 +42,12 @@
         android:layout_marginTop="140px"
         android:text="Lista de titulos"/>
 
+    <Button
+        android:id="@+id/recicleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="140px"
+        android:text="Recycle Titulo"/>
 
 </LinearLayout>

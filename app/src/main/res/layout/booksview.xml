@@ -3,18 +3,44 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:gravity="center_vertical"
     android:layout_height="?android:attr/listPreferredItemHeight">
-   <!--
+
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageBook"
-        android:layout_weight="3" />
-    -->
+        android:layout_height="50dp"
+        android:layout_weight="2"
+        android:src="@drawable/bookicons"
+        android:id="@+id/img"
+        android:padding="5dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="7"
+        android:padding="5dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Titulo do livro escolhido"
+            android:id="@+id/titleBook"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autor do livro"
+            android:id="@+id/authorBook"
+            android:textStyle="italic" />
+    </LinearLayout>
+
     <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="7"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/nameBook" />
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:text="1"
+        android:textSize="15dp"
+        android:id="@+id/noteBook"
+        android:padding="5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center" />
 
 </LinearLayout>

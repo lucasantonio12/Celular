@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adpter.ListViewBooks"></activity>
+        <activity android:name=".recicleView.RecicleBook"></activity>
+        <activity android:name=".adpter.ListViewBooks" />
         <activity android:name=".ListBooks" />
         <activity android:name=".RegisterBook" />
         <activity android:name=".ListBooksButtons" />

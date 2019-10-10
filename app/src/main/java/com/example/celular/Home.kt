@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.celular.adpter.ListViewBooks
+import com.example.celular.recicleView.RecicleBook
 import kotlinx.android.synthetic.main.home.*
 
 class Home : AppCompatActivity() {
@@ -29,6 +30,11 @@ class Home : AppCompatActivity() {
 
         listTitulos.setOnClickListener {
             var i = Intent(this,ListViewBooks::class.java)
+            startActivity(i)
+        }
+
+        recicleButton.setOnClickListener{
+            var i = Intent(this,RecicleBook::class.java)
             startActivity(i)
         }
 
