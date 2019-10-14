@@ -22,7 +22,7 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imgBook"
+            android:id="@+id/imgBookCd"
             android:layout_weight="3"
             android:src="@drawable/bookicons"/>
         <TextView

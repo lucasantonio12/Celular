@@ -20,6 +20,12 @@ class AdapterBook(var context: Context, var listBooks:List<Book>) : RecyclerView
     override fun onBindViewHolder(holder: HolderRecicle, position: Int) {
         val bookSelect = listBooks[position]
         holder.nameCdBook.text = bookSelect.name
+        holder.imgBookCd.setImageResource(R.drawable.bookicons)
+
+        holder.imgBookCd.setOnClickListener {
+            holder.imgBookCd.setImageResource(R.drawable.imageopen)
+        }
+        
 
     }
 

@@ -8,8 +8,9 @@ import com.example.celular.R
 
 class HolderRecicle(v:View): RecyclerView.ViewHolder(v){
     val nameCdBook:TextView
+    val imgBookCd:ImageView
     init {
         nameCdBook = v.findViewById(R.id.nameCdBook)
-
+        imgBookCd = v.findViewById(R.id.imgBookCd)
     }
 }

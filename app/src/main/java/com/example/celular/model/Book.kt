@@ -11,5 +11,4 @@ import java.util.*
 data class Book(var name:String, var author:String, var year:Int, var note:Float){
     @PrimaryKey (autoGenerate = true)
     var id = 0
-    var click = false
 }
