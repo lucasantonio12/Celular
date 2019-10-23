@@ -12,5 +12,9 @@ class HolderRecicle(v:View): RecyclerView.ViewHolder(v){
     init {
         nameCdBook = v.findViewById(R.id.nameCdBook)
         imgBookCd = v.findViewById(R.id.imgBookCd)
+
+        imgBookCd.setOnClickListener {
+            imgBookCd.setImageResource(R.drawable.imageopen)
+        }
     }
 }

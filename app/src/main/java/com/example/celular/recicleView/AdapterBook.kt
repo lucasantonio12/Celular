@@ -25,9 +25,5 @@ class AdapterBook(var context: Context, var listBooks:List<Book>) : RecyclerView
         holder.imgBookCd.setOnClickListener {
             holder.imgBookCd.setImageResource(R.drawable.imageopen)
         }
-        
-
     }
-
-
 }

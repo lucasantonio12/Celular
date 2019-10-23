@@ -15,7 +15,7 @@ interface BookIT{
     fun atualizar(book: Book): Int
 
     @Query("SELECT * FROM table_books")
-    fun listAll(): List<Book>
+    fun listAll(): MutableList<Book>
 
 
     @Query("SELECT * FROM table_books WHERE id = :id")
