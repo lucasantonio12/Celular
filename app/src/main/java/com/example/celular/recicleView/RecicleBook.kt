@@ -1,12 +1,17 @@
 package com.example.celular.recicleView
 
+import android.graphics.Canvas
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.celular.R
 import com.example.celular.conection.Db
@@ -27,41 +32,106 @@ class RecicleBook : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recicle_book)
 
-        var bookList:MutableList<Book> = db.BookIT().listAll()
+        var bookList: MutableList<Book> = db.BookIT().listAll()
 
-        var adapter = AdapterBook(this,db.BookIT().listAll())
+        var adapter = AdapterBook(this, db.BookIT().listAll())
         recyclerview.adapter = adapter
 
-        val layout = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+        val layout = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerview.layoutManager = layout
 
-        recyclerview.addOnItemTouchListener(
-            MyRecyclerViewClickListener(
-                this@RecicleBook,
-                recyclerview,
-                object : MyRecyclerViewClickListener.OnItemClickListener {
-                    override fun onItemClick(view: View, position: Int) {
-                        Toast.makeText(this@RecicleBook, "Clique simples", Toast.LENGTH_SHORT)
-                            .show()
-                    }
 
-                    override fun onItemLongClick(view: View, position: Int) {
-                        val removida = bookList[position]
-                        bookList.remove(removida)
-                        recyclerview.adapter!!.notifyItemRemoved(position)
-                        Toast.makeText(this@RecicleBook, "Clique longo", Toast.LENGTH_SHORT)
-                            .show()
-                        val snack = Snackbar.make(
-                            recyclerview.parent as View,"Removido",Snackbar.LENGTH_LONG )
-                            .setAction("Cancelar") {
-                                bookList.add(position, removida)
-                                recyclerview.adapter!!.notifyItemInserted(position)
-                            }
-                        snack.show()
-                    }
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.START or ItemTouchHelper.END
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                Log.i("AULA17", "OnMove")
+                //é usado para operações drag and drop
+                val fromPosition = viewHolder.adapterPosition
+                val toPosition = target.adapterPosition
+                val adapter = recyclerView.adapter as AdapterBook
+                adapter.mover(fromPosition, toPosition)
+                return true// true se moveu, se não moveu, retorne falso
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                var posicao = viewHolder.adapterPosition
+                var adapter = recyclerview.adapter as AdapterBook
+
+                //adapter.remover(posicao)
+                adapter.removeTime(posicao)
+
+            }
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val itemView = viewHolder.itemView
+                val background = ColorDrawable(resources.getColor(R.color.red))
+                // not sure why, but this method get's called for viewholder that are already swiped away
+                if (viewHolder.adapterPosition === -1) {
+                    // not interested in those
+                    return
                 }
-            )
-        )
-        recyclerview.itemAnimator = FlipInTopXAnimator()
+                Log.i("AULA17", "dx = $dX")
+                // Here, if dX > 0 then swiping right.
+                // If dX < 0 then swiping left.
+                // If dX == 0 then at at start position.
+                // draw red background
+                if (dX < 0) {
+                    Log.i("AULA17", "dX < 0")
+                    background.setBounds(
+                        (itemView.right + dX).toInt(),
+                        itemView.top,
+                        itemView.right,
+                        itemView.bottom
+                    )
+                } else if (dX > 0) {
+                    Log.i("AULA17", "dX > 0")
+                    background.setBounds(
+                        itemView.left,
+                        itemView.top,
+                        (dX).toInt(),
+                        itemView.bottom
+                    )
+                }
+                background.draw(c)
+
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+
+            }
+
+            override fun isLongPressDragEnabled(): Boolean {
+                //return false; se quiser, é possivel desabilitar o drag and drop
+                return true
+            }
+
+            override fun isItemViewSwipeEnabled(): Boolean {
+                //return false; se quiser, é possivel desabilitar o swipe
+                return true
+            }
+
+        })
+
+        itemTouchHelper.attachToRecyclerView(recyclerview)
     }
 }
+
