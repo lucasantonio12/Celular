@@ -27,7 +27,6 @@ class RecicleBook : AppCompatActivity() {
             .allowMainThreadQueries().build()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recicle_book)

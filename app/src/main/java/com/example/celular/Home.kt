@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.celular.adpter.ListViewBooks
 import com.example.celular.recicleView.RecicleBook
+import kotlinx.android.synthetic.main.activity_grid_view.*
 import kotlinx.android.synthetic.main.home.*
 
 class Home : AppCompatActivity() {
@@ -23,6 +24,10 @@ class Home : AppCompatActivity() {
             startActivity(i)
         }
 
+        gridViewButton.setOnClickListener {
+            var i = Intent(this,gridviewad::class.java)
+        }
+
         completTitles.setOnClickListener {
             var i = Intent(this,ListBooks::class.java)
             startActivity(i)
@@ -37,6 +42,7 @@ class Home : AppCompatActivity() {
             var i = Intent(this,RecicleBook::class.java)
             startActivity(i)
         }
+
 
     }
 }
